@@ -27,34 +27,7 @@ An MCP server that scrapes [elitepvpers.com](https://www.elitepvpers.com/forum/s
 
 ## Installation
 
-### Option A — Local (Python)
-
-**Requirements:** Python 3.10+
-
-```bash
-git clone https://github.com/Alvis1337/elitepvpers-mcp.git
-cd elitepvpers-mcp
-pip install -r requirements.txt
-```
-
-Add to your **Claude Desktop** config (`claude_desktop_config.json`):
-
-```json
-{
-  "mcpServers": {
-    "elitepvpers-sro-pserver": {
-      "command": "python",
-      "args": ["C:/path/to/elitepvpers-mcp/server.py"]
-    }
-  }
-}
-```
-
-> **Windows path:** `C:\\Users\\yourname\\elitepvpers-mcp\\server.py`
-
----
-
-### Option B — Docker
+### Option A — Docker (Recommended, works for everyone)
 
 **Requirements:** Docker Desktop
 
@@ -64,7 +37,9 @@ cd elitepvpers-mcp
 docker build -t elitepvpers-mcp .
 ```
 
-Add to your **Claude Desktop** config:
+The repo includes a `.mcp.json` file that Claude CLI picks up **automatically** when you run `claude` from the cloned directory. No manual config needed.
+
+If you want to add it globally, add to `~/.claude.json`:
 
 ```json
 {
@@ -77,16 +52,45 @@ Add to your **Claude Desktop** config:
 }
 ```
 
-> `-i` keeps stdin open for MCP stdio transport. `--rm` cleans up the container after Claude closes.
+> `-i` keeps stdin open for MCP stdio transport. `--rm` cleans up the container after each session.
 
 ---
 
-## Claude Desktop config file location
+### Option B — Local Python
 
-| OS | Path |
-|----|------|
-| Windows | `%APPDATA%\Claude\claude_desktop_config.json` |
-| macOS | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+**Requirements:** Python 3.10+
+
+```bash
+git clone https://github.com/Alvis1337/elitepvpers-mcp.git
+cd elitepvpers-mcp
+pip install -r requirements.txt
+```
+
+Add to `~/.claude.json` (global) or your project's `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "elitepvpers-sro-pserver": {
+      "command": "python",
+      "args": ["/path/to/elitepvpers-mcp/server.py"]
+    }
+  }
+}
+```
+
+> **Windows:** use `C:\\Users\\yourname\\elitepvpers-mcp\\server.py`
+
+---
+
+## Claude CLI quick start
+
+```bash
+git clone https://github.com/Alvis1337/elitepvpers-mcp.git
+cd elitepvpers-mcp
+docker build -t elitepvpers-mcp .
+claude   # .mcp.json is auto-loaded from this directory
+```
 
 ---
 

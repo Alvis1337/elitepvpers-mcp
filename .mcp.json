@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "elitepvpers-sro-pserver": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "elitepvpers-mcp"],
+      "description": "Searches elitepvpers.com for SRO private server resources: guides, opcodes, tools, troubleshooting, source code releases."
+    }
+  }
+}
