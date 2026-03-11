@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "elitepvpers-sro-pserver": {
+      "command": "python",
+      "args": ["C:\\Users\\alvis\\elitepvpers-mcp\\server.py"],
+      "description": "Searches elitepvpers.com for SRO private server resources: guides, opcodes, tools, troubleshooting, source code releases."
+    }
+  }
+}
